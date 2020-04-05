@@ -4,6 +4,7 @@ import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
 
 class AccessList extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {accesses: [], isLoading: true};
@@ -22,7 +23,7 @@ class AccessList extends Component {
     }
     
     async remove(id) {
-        await fetch(`/accesses/${id}`, {
+        await fetch(`/access/${id}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -56,7 +57,7 @@ class AccessList extends Component {
             </td>
           </tr>
         });
-    
+     
         return (
           <div>
             <AppNavbar/>

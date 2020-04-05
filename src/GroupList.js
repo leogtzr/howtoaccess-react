@@ -4,7 +4,8 @@ import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
 
 class GroupList extends Component {
-    constructor(props) {
+    
+  constructor(props) {
         super(props);
         this.state = {groups: [], isLoading: true};
         this.remove = this.remove.bind(this);

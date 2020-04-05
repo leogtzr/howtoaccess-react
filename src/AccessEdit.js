@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 
-class GroupEdit extends Component {
+class AccessEdit extends Component {
 
   emptyItem = {
     name: '',
@@ -25,8 +25,8 @@ class GroupEdit extends Component {
 
   async componentDidMount() {
     if (this.props.match.params.id !== 'new') {
-      const group = await (await fetch(`/api/group/${this.props.match.params.id}`)).json();
-      this.setState({item: group});
+      const access = await (await fetch(`/access/${this.props.match.params.id}`)).json();
+      this.setState({item: access});
     }
   }
 
@@ -43,7 +43,7 @@ class GroupEdit extends Component {
     event.preventDefault();
     const {item} = this.state;
 
-    await fetch('/api/group', {
+    await fetch('/access', {
       method: (item.id) ? 'PUT' : 'POST',
       headers: {
         'Accept': 'application/json',
@@ -51,12 +51,12 @@ class GroupEdit extends Component {
       },
       body: JSON.stringify(item),
     });
-    this.props.history.push('/groups');
+    this.props.history.push('/accesses');
   }
 
   render() {
     const {item} = this.state;
-    const title = <h2>{item.id ? 'Edit Group' : 'Add Group'}</h2>;
+    const title = <h2>{item.id ? 'Edit Access' : 'Add Access'}</h2>;
 
     return <div>
       <AppNavbar/>
@@ -64,40 +64,28 @@ class GroupEdit extends Component {
         {title}
         <Form onSubmit={this.handleSubmit}>
           <FormGroup>
-            <Label for="name">Name</Label>
-            <Input type="text" name="name" id="name" value={item.name || ''}
-                   onChange={this.handleChange} autoComplete="name"/>
+            <Label for="serverDestination">Destination</Label>
+            <Input type="text" name="serverDestination" id="serverDestination" value={item.serverDestination || ''}
+                   onChange={this.handleChange} autoComplete="serverDestination"/>
           </FormGroup>
           <FormGroup>
-            <Label for="address">Address</Label>
-            <Input type="text" name="address" id="address" value={item.address || ''}
+            <Label for="userDestination">User Destination</Label>
+            <Input type="text" name="userDestination" id="userDestination" value={item.userDestination || ''}
                    onChange={this.handleChange} autoComplete="address-level1"/>
           </FormGroup>
           <FormGroup>
-            <Label for="city">City</Label>
-            <Input type="text" name="city" id="city" value={item.city || ''}
+            <Label for="from">From</Label>
+            <Input type="text" name="from" id="from" value={item.from || ''}
                    onChange={this.handleChange} autoComplete="address-level1"/>
           </FormGroup>
-          <div className="row">
-            <FormGroup className="col-md-4 mb-3">
-              <Label for="stateOrProvince">State/Province</Label>
-              <Input type="text" name="stateOrProvince" id="stateOrProvince" value={item.stateOrProvince || ''}
-                     onChange={this.handleChange} autoComplete="address-level1"/>
-            </FormGroup>
-            <FormGroup className="col-md-5 mb-3">
-              <Label for="country">Country</Label>
-              <Input type="text" name="country" id="country" value={item.country || ''}
-                     onChange={this.handleChange} autoComplete="address-level1"/>
-            </FormGroup>
-            <FormGroup className="col-md-3 mb-3">
-              <Label for="country">Postal Code</Label>
-              <Input type="text" name="postalCode" id="postalCode" value={item.postalCode || ''}
-                     onChange={this.handleChange} autoComplete="address-level1"/>
-            </FormGroup>
-          </div>
+          <FormGroup>
+            <Label for="notes">Notes</Label>
+            <Input type="text" name="notes" id="notes" value={item.notes || ''}
+                   onChange={this.handleChange} autoComplete="address-level1"/>
+          </FormGroup>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}
-            <Button color="secondary" tag={Link} to="/groups">Cancel</Button>
+            <Button color="secondary" tag={Link} to="/accesses">Cancel</Button>
           </FormGroup>
         </Form>
       </Container>
@@ -105,4 +93,4 @@ class GroupEdit extends Component {
   }
 }
 
-export default withRouter(GroupEdit);
+export default withRouter(AccessEdit);
