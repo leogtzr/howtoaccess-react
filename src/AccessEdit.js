@@ -62,17 +62,17 @@ class AccessEdit extends Component {
           <FormGroup>
             <Label for="userDestination">User Destination</Label>
             <Input type="text" name="userDestination" id="userDestination" value={item.userDestination || ''}
-                   onChange={this.handleChange} autoComplete="address-level1"/>
+                   onChange={this.handleChange} autoComplete="userDestination"/>
           </FormGroup>
           <FormGroup>
             <Label for="from">From</Label>
             <Input type="text" name="from" id="from" value={item.from || ''}
-                   onChange={this.handleChange} autoComplete="address-level1"/>
+                   onChange={this.handleChange} autoComplete="from"/>
           </FormGroup>
           <FormGroup>
             <Label for="notes">Notes</Label>
             <Input type="text" name="notes" id="notes" value={item.notes || ''}
-                   onChange={this.handleChange} autoComplete="address-level1"/>
+                   onChange={this.handleChange} autoComplete="notes"/>
           </FormGroup>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}

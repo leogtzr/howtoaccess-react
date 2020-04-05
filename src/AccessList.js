@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 class AccessList extends Component {
     
@@ -53,6 +54,11 @@ class AccessList extends Component {
               <ButtonGroup>
                 <Button size="sm" color="primary" tag={Link} to={"/access/" + access.id}>Edit</Button>
                 <Button size="sm" color="danger" onClick={() => this.remove(access.id)}>Delete</Button>
+                <CopyToClipboard 
+                  text={"ssh " + access.userDestination + "@" + access.serverDestination + "    # from " + access.from} 
+                  onCopy={this.onCopy}>
+                  <Button variant="outline-success" size="sm">Copy ssh suggestion</Button>
+                </CopyToClipboard>
               </ButtonGroup>
             </td>
           </tr>
