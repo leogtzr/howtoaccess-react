@@ -5,19 +5,10 @@ import AppNavbar from './AppNavbar';
 
 class AccessEdit extends Component {
 
-  emptyItem = {
-    name: '',
-    address: '',
-    city: '',
-    stateOrProvince: '',
-    country: '',
-    postalCode: ''
-  };
-
   constructor(props) {
     super(props);
     this.state = {
-      item: this.emptyItem
+      item: {}
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

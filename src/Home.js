@@ -12,7 +12,7 @@ class Home extends Component {
         <Container fluid>
           {/* <Button color="link"><Link to="/groups">Manage JUG Tour</Link></Button>
           <hr></hr> */}
-          <Button color="link"><Link to="/menus">Menús</Link></Button>
+          <Button color="link"><Link to="/accesses">Accesses</Link></Button>
         </Container>
       </div>
     );
